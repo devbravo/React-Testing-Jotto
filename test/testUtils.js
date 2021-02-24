@@ -1,11 +1,22 @@
 import checkPropTypes from 'check-prop-types';
+import { createStore } from 'redux';
+import rootReducer from '../src/reducers';
 
 /**
-import { findByTestAttr } from './test/utils';
-import { checkPropTypes } from 'check-prop-types';
- * Factory function to create a ShallowWrapper for the Congrats component.
- * @function setup
- * @param {object} props - Component props specific to this setup
+ * Create a testing store with imported reducers, middleware, and initial state.
+ * globals: rootReducer
+ * @param {object} initialState - Initial state for store
+ * @function storeFactory
+ * @returns {Store} - Redux store
+ */
+export const storeFactory = initialState => {
+  return createStore(rootReducer, initialState);
+};
+
+/**
+ * Return node(s) with the given data-test attribute
+ * @param {ShallowWrapper} wrapper - Enzyme shallow wrapper
+ * @param {string} val - Value of data-test attribute for search
  * @returns {ShallowWrapper}
  */
 
